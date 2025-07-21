@@ -25,7 +25,7 @@ scissors = '''
       (____)
 ---.__(___)
 '''
-
+lista_jogadas = [rock, paper, scissors]
 print("Bem vindo ao jogo de pedra, papel ou tesoura!")
 print("Digite 0 para escolher pedra")
 print("Digite 1 para escolher papel")
@@ -34,19 +34,9 @@ print("Digite 2 para escolher tesoura")
 escolha_usuario = int(input())
 escolha_computador = random.randint(0,2)
 
-if escolha_usuario == 0:
-    print(f'Sua escolha: \n{rock}')
-elif escolha_usuario == 1:
-    print(f'Sua escolha: \n{paper}')
-else:
-    print(f'Sua escolha: \n{scissors}')
+print(f'Sua escolha: \n{lista_jogadas[escolha_usuario]}')
 
-if escolha_computador == 0:
-    print(f'Escolha do computador: \n{rock}')
-elif escolha_computador == 1:
-    print(f'Escolha do computador: \n{paper}')
-else:
-    print(f'Escolha do computador: \n{scissors}')
+print(f'Jogada do computador: \n{lista_jogadas[escolha_computador]}')
 
 if escolha_computador == escolha_usuario:
     print('O jogo empatou!')
