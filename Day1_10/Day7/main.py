@@ -8,7 +8,7 @@ word_list = hangman_words.word_list
 chosen_word = random.choice(word_list)
 
 placeholder = ""
-
+print(stages[6])
 word_length = len(chosen_word)
 for position in range(word_length):
     placeholder += "_"
