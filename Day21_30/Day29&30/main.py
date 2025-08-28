@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 from tkinter import messagebox
 from random import randint, choice, shuffle
 import json
@@ -12,7 +12,7 @@ def find_password():
         with open("data.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             try:
-                website = data[user_entry]
+                data[user_entry]
             except KeyError:
                 # Website nao cadastrado
                 messagebox.showwarning(title="Website not founded!", message="Make sure you cadastred this website.")
@@ -46,7 +46,7 @@ def create_password():
     # Passar a lista para string
     string_password = "".join(generated_password)
     # Sobrescrever o campo de senha
-    password_entry.delete(0, END)
+    password_entry.delete(0, tk.END)
     password_entry.insert(0, string_password)
     # Copiar para o clipboard
     password_entry.clipboard_clear()
@@ -89,53 +89,53 @@ def save_password():
         else:
             update_file(data)
         finally:
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+            website_entry.delete(0, tk.END)
+            password_entry.delete(0, tk.END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
 # criando a tela
-window = Tk()
+window = tk.Tk()
 window.title('Password Manager')
 window.config(padx=50, pady=50)
 
 # pegando a imagem
-canva = Canvas(width=200, height=200, highlightthickness=0)
-logo_image = PhotoImage(file='logo.png')
+canva = tk.Canvas(width=200, height=200, highlightthickness=0)
+logo_image = tk.PhotoImage(file='logo.png')
 canva.create_image(100, 100, image=logo_image)
 canva.grid(column=1, row=0)
 
 # Criando widgets
 # Labels
-website_label = Label(text='Website:')
+website_label = tk.Label(text='Website:')
 website_label.grid(column=0, row=1)
 
-email_label = Label(text='Email/Username:')
+email_label = tk.Label(text='Email/Username:')
 email_label.grid(column=0, row=2)
 
-password_label = Label(text='Password:')
+password_label = tk.Label(text='Password:')
 password_label.grid(column=0, row=3)
 
 # Entry
-website_entry = Entry(width=35)
+website_entry = tk.Entry(width=35)
 website_entry.grid(column=1, row=1, sticky="EW")
 website_entry.focus()
 
-email_entry = Entry(width=35)
+email_entry = tk.Entry(width=35)
 email_entry.grid(column=1, row=2, columnspan=2,sticky="EW")
-email_entry.insert(END, "email_teste@gmail.com")
+email_entry.insert(tk.END, "email_teste@gmail.com")
 
-password_entry = Entry(width=21)
+password_entry = tk.Entry(width=21)
 password_entry.grid(column=1, row=3,sticky="EW")
 
 # Buttons
-generate_button = Button(text='Generate Password', command=create_password)
+generate_button = tk.Button(text='Generate Password', command=create_password)
 generate_button.grid(column= 2, row=3, sticky="EW")
 
-add_button = Button(text='Add', width=36, command=save_password)
+add_button = tk.Button(text='Add', width=36, command=save_password)
 add_button.grid(column=1 , row=4, columnspan=2,sticky="EW")
 
-search_button = Button(text="Search", command=find_password)
+search_button = tk.Button(text="Search", command=find_password)
 search_button.grid(column=2, row=1, sticky="EW")
 
 
